@@ -14,7 +14,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="name">invoice_tree</field>
         </record>
 
-        <record model="ir.action.act_window" id="account_invoice.act_invoice_form">
+        <record model="ir.action.act_window" id="account_invoice.act_invoice_out_form">
             <field name="search_value"
                 eval="[('shop', 'ilike',  Eval('context', {}).get('shop.rec_name', '%'))]"
                 pyson="1"/>
