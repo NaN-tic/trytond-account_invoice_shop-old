@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,shop:"
+msgid "Shop"
+msgstr "Tienda"
+
+msgctxt "field:account.invoice,shop_address:"
+msgid "Shop Address"
+msgstr "Dirección tienda"

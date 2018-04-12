@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- This file is part account_invoice_shop module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_view_tree">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_tree"/>
+            <field name="name">invoice_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="account_invoice.act_invoice_form">
+            <field name="search_value"
+                eval="[('shop', 'ilike',  Eval('context', {}).get('shop.rec_name', '%'))]"
+                pyson="1"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account_invoice">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_invoice1">
+            <field name="domain"
+                eval="['OR', ('shop', 'in', Eval('user', {}).get('shops', [])), ('shop', '=', None)]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_invoice"/>
+        </record>
+    </data>
+</tryton>
