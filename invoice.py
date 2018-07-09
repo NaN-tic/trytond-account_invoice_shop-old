@@ -21,12 +21,6 @@ class Invoice:
     shop_address = fields.Function(fields.Many2One('party.address',
         'Shop Address'), 'on_change_with_shop_address')
 
-    @classmethod
-    def __setup__(cls):
-        super(Invoice, cls).__setup__()
-        cls.currency.states['readonly'] |= Eval('shop')
-        cls.currency.depends.append('shop')
-
     @staticmethod
     def default_company():
         User = Pool().get('res.user')
